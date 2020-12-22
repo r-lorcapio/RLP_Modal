@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿
+
+using Microsoft.Extensions.DependencyInjection;
 using RLP.App.businessDelegate;
 using RLP.App.Domain;
 using RLP.App.Handler;
@@ -12,7 +14,7 @@ namespace RLP.App
         public const string VALID_EXTENSIONS = ".txt,.xls,.xlsx";
         protected Pagination Pagination { get; set; }
         protected IServiceProvider Provider;
-        
+
         public ApplicationBase(Pagination pagination)
         {
             //Dependency Injection.
@@ -28,7 +30,7 @@ namespace RLP.App
 
             this.Pagination = pagination;
         }
-      
+
         protected void WriteLine(string message)
         {
             Console.Clear();
@@ -37,16 +39,16 @@ namespace RLP.App
 
         //Required Methods.
         public abstract void ReadKeys();
-
         protected static bool MainMenu()
         {
             Console.Clear();
             Console.WriteLine("Escolha uma opção:");
             Console.WriteLine("");
-            Console.WriteLine("Arrow Down");
-            Console.WriteLine("Arrow Up");
-            Console.WriteLine("Page Down");
-            Console.WriteLine("Page Up");
+            Console.WriteLine("Arrow Down ==> Navegue saltando de 1 em 1");
+            Console.WriteLine("Arrow Up ==> Navegue voltando de 1 e 10");
+            Console.WriteLine("Page Down ==> Navegue saltando de 10 em 10");
+            Console.WriteLine("Page Up ==> Navegue voltando de 10 em 10");
+            Console.WriteLine("L  ==> Indique a linha desejada");
 
             return true;
         }

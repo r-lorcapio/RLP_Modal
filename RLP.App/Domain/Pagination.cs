@@ -6,6 +6,8 @@ namespace RLP.App.Domain
         public string PathFile { get; set; }
 
 
+        public int CountMaxFile { get; set; }
+
         /// <summary>
         /// Como o cache, poderá armazenar somente 100 linhas. Vamos cachear sempre as proximas 50 e as 50 anteriores.
         /// </summary>

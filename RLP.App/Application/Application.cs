@@ -14,54 +14,52 @@ namespace RLP.App
     {
         public Application(Pagination pagination) : base(pagination) { }
 
-        public bool FileValidate()
+        public string FileValidate(string pathFile)
         {
 
             try
             {
-                if (string.IsNullOrEmpty(base.Pagination.PathFile))
+                if (string.IsNullOrEmpty(pathFile))
                 {
-                    base.WriteLine("Invalid path!");
-                    return false;
+                    return "Caminho inválido";
                 }
 
-                if (!File.Exists(base.Pagination.PathFile))
+                if (!File.Exists(pathFile))
                 {
-                    base.WriteLine("File not exists!");
-                    return false;
+                    return "Arquivo não encontrado!";
                 }
 
-                if (!(bool)Path.GetExtension(base.Pagination.PathFile).ExtensionIsValid(VALID_EXTENSIONS))
+                if (!(bool)Path.GetExtension(pathFile).ExtensionIsValid(VALID_EXTENSIONS))
                 {
-                    base.WriteLine($"Extension is not valid! Accepted only {VALID_EXTENSIONS}");
-                    return false;
+                    return $"Extensão inválida de arquivo. Aceito somente: {VALID_EXTENSIONS}";
                 }
 
                 //Arquivo validado, mostra o menu.
+                base.Pagination.PathFile = pathFile;
+                //base.Pagination.CountMaxFile = File.ReadAllLines(pathFile).Length;
                 MainMenu();
             }
             catch (IOException ioEx)
             {
-                base.WriteLine($"{ioEx.Message}");
-                return false;
+                return $"{ioEx.Message}";
             }
             catch (Exception ex)
             {
-                base.WriteLine($"{ex.Message}");
-                return false;
+                return $"{ex.Message}";
             }
 
-            return true;
+            return string.Empty;
         }
 
         public override void ReadKeys()
         {
-            ConsoleKeyInfo key = new ConsoleKeyInfo();
+            var key = new ConsoleKeyInfo();
 
             while (!Console.KeyAvailable && key.Key != ConsoleKey.Escape)
             {
                 key = Console.ReadKey(true);
 
+                
                 switch (key.Key)
                 {
                     case ConsoleKey.UpArrow:
@@ -77,13 +75,40 @@ namespace RLP.App
                         Provider.GetRequiredService<IPageUp>().Handle();
                         break;
                     case ConsoleKey.L:
-                        
+
                         Console.WriteLine("Informe a linha desejada:");
                         string row = Console.ReadLine();
-                        base.Pagination.CurrentRow = int.Parse(row);
-                        Provider.GetRequiredService<ISearch>().Handle();
+
+                        if (string.IsNullOrWhiteSpace(row))
+                        {
+                            Console.WriteLine("Informe um valor válido.");
+                        }
+                        else
+                        {
+                            if (int.TryParse(row, out int currentRow))
+                            {
+                                //if (currentRow <= base.Pagination.CountMaxFile)
+                                //{
+                                base.Pagination.CurrentRow = currentRow;
+                                Provider.GetRequiredService<ISearch>().Handle();
+                                //}
+                                //else
+                                //{
+                                //    Console.WriteLine("Linha não encontrada no documento.");
+                                //}
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Número inválido.");
+                            }
+
+                        }
+
                         break;
                     case ConsoleKey.E:
+                        base.Pagination.SkipRow = 0;
+                        base.Pagination.CurrentRow = 0;
                         MainMenu();
                         break;
 
@@ -99,3 +124,4 @@ namespace RLP.App
 
     }
 }
+
