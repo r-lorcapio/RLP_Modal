@@ -12,6 +12,7 @@
   <ItemGroup>
     <Folder Include="Files\" />
     <Folder Include="Handlers\Commom\" />
+    <Folder Include="DEMO\" />
   </ItemGroup>
 
 </Project>
