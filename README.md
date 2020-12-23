@@ -32,4 +32,4 @@ Rodrigo Lorca Pio – [@Rodrigo Lorca Pio](https://www.linkedin.com/in/rodrigo-l
 [npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/datadog-metrics
 [npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
-[projeto]: https://github.com/r-lorcapio/RLP_Modal
+[projeto]: https://github.com/r-lorcapio/RLP_Modal/tree/master/RLP.App/DOCS
