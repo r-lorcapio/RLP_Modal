@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RLP.App.Domain;
+﻿using RLP.App.Domain;
 using RLP.App.Extensions;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace RLP.App.businessDelegate
+namespace RLP.App.BusinessDelegate
 {
     public interface IBusinessBd
     {

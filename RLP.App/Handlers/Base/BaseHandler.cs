@@ -1,9 +1,6 @@
-﻿using RLP.App.businessDelegate;
-using RLP.App.Domain;
+﻿using RLP.App.BusinessDelegate;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace RLP.App.Handlers.Base

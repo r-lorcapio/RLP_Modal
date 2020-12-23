@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using RLP.App.Domain;
 using System;
-using System.IO;
 using System.Threading.Tasks;
 
 namespace RLP.App

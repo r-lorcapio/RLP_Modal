@@ -1,7 +1,7 @@
 ﻿
 
 using Microsoft.Extensions.DependencyInjection;
-using RLP.App.businessDelegate;
+using RLP.App.BusinessDelegate;
 using RLP.App.Domain;
 using RLP.App.Handler;
 using System;

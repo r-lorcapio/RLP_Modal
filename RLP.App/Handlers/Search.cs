@@ -1,9 +1,6 @@
-﻿using RLP.App.businessDelegate;
-using RLP.App.Domain;
+﻿using RLP.App.BusinessDelegate;
 using RLP.App.Handlers.Base;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace RLP.App.Handler
 {

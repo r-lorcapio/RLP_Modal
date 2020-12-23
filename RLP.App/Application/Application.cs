@@ -1,12 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using RLP.App.businessDelegate;
 using RLP.App.Domain;
 using RLP.App.Extensions;
 using RLP.App.Handler;
 using System;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace RLP.App
 {
@@ -36,7 +33,6 @@ namespace RLP.App
 
                 //Arquivo validado, mostra o menu.
                 base.Pagination.PathFile = pathFile;
-                //base.Pagination.CountMaxFile = File.ReadAllLines(pathFile).Length;
                 MainMenu();
             }
             catch (IOException ioEx)
@@ -59,7 +55,7 @@ namespace RLP.App
             {
                 key = Console.ReadKey(true);
 
-                
+
                 switch (key.Key)
                 {
                     case ConsoleKey.UpArrow:
@@ -87,16 +83,8 @@ namespace RLP.App
                         {
                             if (int.TryParse(row, out int currentRow))
                             {
-                                //if (currentRow <= base.Pagination.CountMaxFile)
-                                //{
-                                base.Pagination.CurrentRow = currentRow;
+                                Pagination.CurrentRow = currentRow;
                                 Provider.GetRequiredService<ISearch>().Handle();
-                                //}
-                                //else
-                                //{
-                                //    Console.WriteLine("Linha não encontrada no documento.");
-                                //}
-
                             }
                             else
                             {
